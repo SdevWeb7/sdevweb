@@ -1,0 +1,89 @@
+
+.my-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  background-color: lightgray;
+  font-size: 22px;
+  font-weight: bolder;
+  box-shadow: 0px 2px 0px 1px rgba(0,0,0,0.83);
+  display: flex;
+
+  .my-navbar {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    a {
+      cursor: pointer;
+      margin: 15px;
+      text-decoration: none;
+      color: grey;
+
+      &:hover {
+        color: purple;
+      }
+      &.active {
+        color: black;
+      }
+    }
+  }
+
+  .my-burger {
+    position: relative;
+    width: 50px;
+    margin-left: auto;
+    svg {
+      position: absolute;
+      top: 0px;
+      right: 5px;
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 40;
+    margin: 15px;
+  }
+  .my-search {
+    position: fixed;
+    top: 20px;
+    left: 20%;
+    right: 20%;
+    height: 40px;
+
+    input {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .my-menu-deroulant {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 400px;
+    width: 250px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+
+    a {
+      text-decoration: none;
+      &:hover {
+        color: purple;
+      }
+      &.active {
+        color: black;
+      }
+    }
+  }
+}

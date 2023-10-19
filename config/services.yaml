@@ -20,5 +20,24 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\EventSubscriber\EventCompteur:
+        arguments:
+            $compteur: '@App\Service\Compteur'
+            $twig: '@twig'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+
+    App\Service\Compteur:
+        arguments:
+            $fichier: 'compteur'
+
+    App\EventListener\MyCustomLogoutListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'Symfony\Component\Security\Http\Event\LogoutEvent', dispatcher: 'security.event_dispatcher.main' }
+
+    App\MessageHandler\ValidEmailHandler:
+        arguments:
+            $emailVerifier: '@App\Security\EmailVerifier'
+            $repository: '@App\Repository\UserRepository'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

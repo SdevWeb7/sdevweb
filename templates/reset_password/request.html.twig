@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-container">
+
+        {{ form_start(requestForm) }}
+
+        <div class="form-labels">
+            <p>Entrez votre email</p>
+        </div>
+        <div class="form-fields">
+            {{ form_widget(requestForm.email) }}
+        </div>
+
+        <button type="submit" class="btn-submit">Recevoir un email de réinitialisation</button>
+        {{ form_end(requestForm) }}
+    </div>
+{% endblock %}
