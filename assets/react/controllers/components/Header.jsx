@@ -11,7 +11,7 @@ export function Header ({user = null}) {
 
    const variants = {
       visible: {y: 0},
-      hidden: {y: -50}
+      hidden: {y: -70}
    }
 
    return (
@@ -19,14 +19,16 @@ export function Header ({user = null}) {
          <motion.header className={'my-header'} animate={isScrolledTop ? "visible" : 'hidden'} variants={variants} transition={{duration: .3, type: 'tween', ease: 'easeInOut'}}>
 
             <nav className={'my-navbar'}>
-               <Links user={user} />
+               <Links />
             </nav>
 
-            <hr/>
 
-            <MySearchSvg />
+            <div className="header-right-side">
+               <hr/>
+               <MySearchSvg />
+               <MyBurger user={user} />
+            </div>
 
-            <MyBurger user={user} />
          </motion.header>
       </>
    )

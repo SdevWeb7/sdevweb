@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
       new GetCollection(normalizationContext: [
          'groups' => 'video:list'
       ], security: 'is_granted("IS_AUTHENTICATED_FULLY")'),
-   ], order: ['title' => 'DESC'], paginationItemsPerPage: 2,
+   ], order: ['title' => 'DESC'], paginationItemsPerPage: 4,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['title' => 'exact'])]
 #[ORM\Entity(repositoryClass: VideoRepository::class)]

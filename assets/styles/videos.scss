@@ -13,12 +13,15 @@
 }
 .container-card-player-full {
   text-align: center;
-  width: 90%;
-  height: 100%;
+  width: 95%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   margin: 20px;
+
+  p {
+    margin-bottom: 40px;
+  }
 }

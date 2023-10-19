@@ -1,0 +1,41 @@
+.header-right-side {
+  margin: 0 10px 0 auto;
+  width: 100px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-content: end;
+  align-items: end;
+
+  hr {
+    margin: 0 0 5px 0;
+    height: 18px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    scale: .8;
+    cursor: pointer;
+  }
+}
+
+.my-search-svg {
+  align-content: end;
+}
+.my-burger {
+  width: 40px;
+  height: 100%;
+  position: relative;
+
+  svg {
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    z-index: 40;
+  }
+}

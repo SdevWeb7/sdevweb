@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Links } from "./Links";
+import { LinksMenu } from "./LinksMenu";
 
 
 export const MyMenuDeroulant = ({toggleMenu, user}) => {
@@ -22,7 +22,7 @@ export const MyMenuDeroulant = ({toggleMenu, user}) => {
 
    return (
          <div className={'my-menu-deroulant'} ref={menuRef}>
-            <Links menu={'yes'} user={user} />
+            <LinksMenu user={user} />
          </div>
    )
 }

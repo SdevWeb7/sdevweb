@@ -1,20 +1,20 @@
 @import "header";
 @import "footer";
 @import "videos";
+@import "header-right";
+@import "menu_and_search";
 
 html, body {
     padding: 0;
-    margin: 40px 0;
+    margin: 33px 10px 25px 10px;
     box-sizing: border-box;
     background-color: whitesmoke;
+    font-family: Inter, sans-serif;
 }
 h1 {
     text-align: center;
-    font-size: 42px;
+    font-size: 32px;
 }
-h2 {
-    text-align: center;
-}
-p {
+h2, p {
     text-align: center;
 }

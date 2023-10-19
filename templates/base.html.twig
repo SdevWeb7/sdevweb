@@ -17,10 +17,13 @@
         <div {{ react_component('components/Header', {
             user: app.user.username ?? null
         }) }}></div>
+        <hr>
 
         {% block body %}{% endblock %}
 
-        <div {{ react_component('components/Footer') }}></div>
+        <div {{ react_component('components/Footer', {
+            user: app.user ? app.user.username : null
+        }) }}></div>
 
     </body>
 </html>
