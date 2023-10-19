@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Links } from "./Links";
 
 
-export const MyMenuDeroulant = ({toggleMenu}) => {
+export const MyMenuDeroulant = ({toggleMenu, user}) => {
 
    const menuRef = useRef();
    const event = (e) => {
@@ -22,7 +22,7 @@ export const MyMenuDeroulant = ({toggleMenu}) => {
 
    return (
          <div className={'my-menu-deroulant'} ref={menuRef}>
-            <Links />
+            <Links menu={'yes'} user={user} />
          </div>
    )
 }

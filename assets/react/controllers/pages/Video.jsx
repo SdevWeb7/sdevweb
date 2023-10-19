@@ -23,7 +23,7 @@ export function Video () {
       <h1>Vidéo {param.id}</h1>
 
          <Suspense fallback={<div>Chargement...</div>}>
-            <Await resolve={datas}>
+            <Await resolve={datas} errorElement={<div>Erreur</div>}>
                {datas ? <CardPlayerFull video={datas} /> : 'Erreur de chargement'}
             </Await>
          </Suspense>

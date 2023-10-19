@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyMenuDeroulant } from "./MyMenuDeroulant";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const MyBurger = () => {
+export const MyBurger = ({user}) => {
 
    let [showMenu, setShowMenu] = useState(false);
 
@@ -26,7 +26,7 @@ export const MyBurger = () => {
                {showMenu && <motion.svg onClick={toggleBurger} animate={showMenu ? 'visible' : 'hidden'} exit={'hidden'} variants={burgerVariant}><use href="/sprite.svg#my-burger-close"></use></motion.svg>}
             </AnimatePresence>
 
-            {showMenu && <MyMenuDeroulant toggleMenu={toggleBurger} />}
+            {showMenu && <MyMenuDeroulant toggleMenu={toggleBurger} user={user} />}
          </div>
       </>
    )

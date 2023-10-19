@@ -1,4 +1,3 @@
-
 .my-header {
   position: fixed;
   top: 0;
@@ -32,7 +31,27 @@
       }
     }
   }
+  .profil-nav {
+    height: 100%;
+    margin-left: auto;
+    display: flex;
 
+    a {
+      padding: 0;
+      margin: 15px 15px 5px 10px;
+    }
+    p {
+      padding: 0;
+      margin: 15px 10px 5px 10px;
+    }
+    svg {
+      transform: translateY(-12px);
+    }
+    #svg-logout {
+      width: 20px;
+      height: 20px;
+    }
+  }
   .my-burger {
     position: relative;
     width: 50px;

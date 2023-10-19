@@ -5,7 +5,7 @@ import { Links } from "./Links";
 import { MyBurger } from "./MyBurger";
 import { MySearchSvg } from "./MySearchSvg";
 
-export function Header () {
+export function Header ({user = null}) {
 
    const {isScrolledTop} = useScrollY({baseState: true});
 
@@ -19,15 +19,16 @@ export function Header () {
          <motion.header className={'my-header'} animate={isScrolledTop ? "visible" : 'hidden'} variants={variants} transition={{duration: .3, type: 'tween', ease: 'easeInOut'}}>
 
             <nav className={'my-navbar'}>
-               <Links />
+               <Links user={user} />
             </nav>
 
             <hr/>
 
             <MySearchSvg />
 
-            <MyBurger />
+            <MyBurger user={user} />
          </motion.header>
       </>
    )
 }
+export default Header;

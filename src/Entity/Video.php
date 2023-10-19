@@ -27,6 +27,7 @@ class Video
    #[ORM\Id]
    #[ORM\GeneratedValue]
    #[ORM\Column]
+   #[Groups(['video:item', 'video:list'])]
    private ?int $id = null;
 
    #[ORM\Column(length: 255)]

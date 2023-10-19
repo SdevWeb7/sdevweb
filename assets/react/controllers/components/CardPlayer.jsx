@@ -6,7 +6,7 @@ export function CardPlayer ({video}) {
 
    return (
          <div className={'container-card-player'}>
-            <h2><NavLink to={`/video/${video.id}`}>{video.title}</NavLink></h2>
+            <h2><NavLink to={`/react/${video.id}`}>{video.title}</NavLink></h2>
 
             <p>{video.description}</p>
 

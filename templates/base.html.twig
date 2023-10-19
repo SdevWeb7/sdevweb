@@ -13,6 +13,14 @@
         {% endblock %}
     </head>
     <body>
+
+        <div {{ react_component('components/Header', {
+            user: app.user.username ?? null
+        }) }}></div>
+
         {% block body %}{% endblock %}
+
+        <div {{ react_component('components/Footer') }}></div>
+
     </body>
 </html>
