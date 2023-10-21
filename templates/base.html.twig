@@ -15,7 +15,7 @@
     <body>
 
         <div {{ react_component('components/Header', {
-            user: app.user.username ?? null
+            user: app.user ? app.user.username : null
         }) }}></div>
         <hr>
 
@@ -25,6 +25,7 @@
         {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
             {% set admin = true %}
         {% endif %}
+
 
         <div {{ react_component('components/Footer', {
             user: app.user ? app.user.username : null,

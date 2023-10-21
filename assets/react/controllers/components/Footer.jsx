@@ -33,7 +33,7 @@ export function Footer ({user, themeSombre, admin}) {
                {user ?
                   <>
                      <a href="/logout"><svg><use href="/sprite.svg#svg-logout"></use></svg></a>
-                     <a href="#">{user}</a>
+                     <a href="/profil">{user}</a>
 
                      {admin && <>
                         <a href={'/admin'}>Admin</a>

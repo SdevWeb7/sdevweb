@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+    <h1>Profil</h1>
+
+   <div class="my-form-container">
+       <form action="{{ path('app_profil') }}" method="post">
+           <h2>Modifiez votre profil</h2>
+
+           <label for="username">Nom d'utilisateur</label>
+           <input id="username" type="text" name="username" value="{{ app.user.username }}">
+
+           <label for="email">Email</label>
+           <input id="email" type="text" name="email" value="{{ app.user.email }}">
+
+           <input type="hidden" name="_token" value="{{ csrf_token('modify_profil') }}">
+
+           <button type="submit">Modifier</button>
+       </form>
+
+       <form style="border: none; box-shadow: none; background: none;" action="{{ path('app_profil_delete') }}" method="post">
+
+           <input type="hidden" name="_token2" value="{{ csrf_token('delete_profil') }}">
+
+           <button style="background: red; color: whitesmoke; margin: 0; width: 100%" class="delete-btn" type="submit">Supprimer</button>
+       </form>
+   </div>
+{% endblock %}

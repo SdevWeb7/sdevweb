@@ -16,6 +16,13 @@ class DashboardController extends AbstractDashboardController
    #[Route('/admin', name: 'admin')]
    public function index(): Response
    {
+      if (!$this->getUser()) {
+         return $this->redirectToRoute('app_login');
+      }
+      if (!in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+         $this->addFlash('error', 'Vous devez être admin');
+         return $this->redirectToRoute('app_home');
+      }
       $routeBuilder = $this->container->get(AdminUrlGenerator::class);
       $url = $routeBuilder->setController(UserCrudController::class)->generateUrl();
       return $this->redirect($url);

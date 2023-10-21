@@ -55,5 +55,10 @@
     li {
       color: red;
     }
+
+    .btn-grp {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
