@@ -10,7 +10,6 @@ export function MySearch ({toggleSearch}) {
          toggleSearch();
       }
    }
-   console.log()
 
    useEffect(() => {
       setTimeout(() => {
@@ -23,7 +22,7 @@ export function MySearch ({toggleSearch}) {
 
    return (
          <div className={'my-search'} ref={searchRef}>
-            <input ref={inputRef} type="text" placeholder='Rechercher' />
+            <input ref={inputRef} type="text" />
          </div>
    )
 }

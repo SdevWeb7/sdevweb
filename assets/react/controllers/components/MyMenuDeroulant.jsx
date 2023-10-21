@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import { LinksMenu } from "./LinksMenu";
+import { motion } from "framer-motion";
 
-
-export const MyMenuDeroulant = ({toggleMenu, user}) => {
+export const MyMenuDeroulant = ({toggleMenu, user, show}) => {
 
    const menuRef = useRef();
    const event = (e) => {
@@ -20,9 +20,24 @@ export const MyMenuDeroulant = ({toggleMenu, user}) => {
       }
    }, [])
 
+   const variants = {
+      hidden: {x: 250, opacity: 0},
+      visible: {x: 0, opacity: 1}
+   }
+
    return (
-         <div className={'my-menu-deroulant'} ref={menuRef}>
+      <MyMenuDeroulantMotion>
+         <motion.div className={'my-menu-deroulant'} ref={menuRef} initial={'hidden'} exit={'hidden'} animate={show ? 'visible' : "hidden"} variants={variants} transition={{duration: .3, type: 'tween', ease: "easeInOut"}}>
             <LinksMenu user={user} />
-         </div>
+         </motion.div>
+      </MyMenuDeroulantMotion>
+
    )
 }
+
+
+const Box = forwardRef(({children}, ref) => {
+   return <div ref={ref}>{children}</div>
+})
+const MyMenuDeroulantMotion = motion(Box)
+

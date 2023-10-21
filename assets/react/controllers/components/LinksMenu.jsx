@@ -6,7 +6,7 @@ export function LinksMenu ({user}) {
    return (
       <>
          <a href="/" className={classMaker("/")}>Home</a>
-         <a href="/react" className={classMaker("/react")}>Vidéos</a>
+         <a href="/MyReact.jsx" className={classMaker("/react")}>Vidéos</a>
 
          {user ?
             <>

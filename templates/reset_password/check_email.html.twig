@@ -3,10 +3,9 @@
 {% block title %}Email envoyé{% endblock %}
 
 {% block body %}
-    {% for flash in app.flashes('reset_password_error') %}
-        <p>{{ flash }}</p>
-    {% endfor %}
-    <p>
+    <h1>Réinitialisation du mot de passe</h1>
+
+    <p style="margin-top: 40px">
         Vous allez recevoir un lien pour réinitialiser le mot de passe.
         Ce lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
     </p>

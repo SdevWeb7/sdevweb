@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Videos{% endblock %}
+
+{% block body %}
+
+    <h1>Toutes les videos</h1>
+
+    {% include 'partials/_pagination.html.twig' %}
+
+    <div class="container-videos">
+        {% for video in videos %}
+            <div class="container-card-player">
+
+                <p><b>Titre :</b> {{ video.title }}</p>
+                <p><b>Description :</b> {{ video.description }}</p>
+                <p><a target="_blank" href="{{ video.url }}">Lien source</a></p>
+
+                <a href="{{ path('app_video_show', {id: video.id }) }}"><img src="{{ video.url|youtube_thumbnail }}" alt="oops"></a>
+
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

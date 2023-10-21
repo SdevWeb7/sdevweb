@@ -20,29 +20,16 @@ class RegistrationFormType extends AbstractType
    public function buildForm(FormBuilderInterface $builder, array $options): void
    {
       $builder
-         ->setMethod('get')
          ->add('username', TextType::class, [
-            'attr' => [
-               'class' => 'form-fields'
-            ],
-            'label' => 'Nom d\'utilisateur',
-            'label_attr' => [
-               'class' => 'form-labels'
-            ],
+            'label' => 'Nom d\'utilisateur'
          ])
          ->add('email', EmailType::class, [
-            'attr' => [
-               'class' => 'form-fields'
-            ],
-            'label' => 'Adresse e-mail',
-            'label_attr' => [
-               'class' => 'form-labels'
-            ]
+            'label' => 'Adresse e-mail'
          ])
          ->add('agreeTerms', CheckboxType::class, [
             'label' =>'Conditions d\'utilisation',
-            'label_attr' => [
-               'class' => 'form-labels'
+            'attr' => [
+               'class' => 'agreeTerms'
             ],
             'mapped' => false,
             'constraints' => [
@@ -54,16 +41,12 @@ class RegistrationFormType extends AbstractType
          ->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
             'invalid_message' => 'Les 2 champs doivent correspondre.',
-            'options' => [
-               'attr' => [
-                  'class' => 'password-field'
-               ]],
             'required' => true,
             'first_options'  => [
-               'label' => 'Password'
+               'label' => 'Mot de passe'
             ],
             'second_options' => [
-               'label' => 'Repeat Password'
+               'label' => 'Confirmer mot de passe'
             ],
             'mapped' => false,
             'constraints' => [
@@ -82,7 +65,7 @@ class RegistrationFormType extends AbstractType
          'data_class' => User::class,
          'constraints' => [
             new UniqueEntity(['fields' => 'email']),
-            new UniqueEntity(['fields' => 'username']),
+            new UniqueEntity(['fields' => 'username'])
          ],
       ]);
    }

@@ -1,24 +1,25 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import { Videos } from "./pages/Videos";
+import { Reacts } from "./pages/Reacts";
+import { MyReact } from "./pages/MyReact";
 import { PageError } from "./pages/PageError";
-import { Video } from "./pages/Video";
 
 const App = () => {
+
    const router = createBrowserRouter([
       {
-         path: "/react",
+         path: "/react-api",
          element: <Layout />,
          errorElement: <PageError />,
          children: [
             {
                path: "",
-               element: <Videos />
+               element: <Reacts />
             },
             {
                path: ':id',
-               element: <Video />
+               element: <MyReact />
             }
          ]
       }

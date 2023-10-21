@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="form-container">
+    <h1>Réinitialisation du mot de passe</h1>
+
+    <div class="my-form-container">
 
         {{ form_start(requestForm) }}
 
-        <div class="form-labels">
-            <p>Entrez votre email</p>
+        <div style="text-align: center; margin-bottom: 30px">
+            {{ form_label(requestForm.email) }}
         </div>
-        <div class="form-fields">
-            {{ form_widget(requestForm.email) }}
-        </div>
+        {{ form_widget(requestForm.email) }}
+        {{ form_errors(requestForm.email) }}
 
-        <button type="submit" class="btn-submit">Recevoir un email de réinitialisation</button>
+        <button type="submit">Recevoir un email de réinitialisation</button>
         {{ form_end(requestForm) }}
     </div>
 {% endblock %}

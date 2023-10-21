@@ -5,11 +5,15 @@
 }
 .container-card-player {
   border: 1px solid black;
-  height: 465px;
   width: 350px;
   overflow: hidden;
   text-align: center;
   margin: 20px;
+
+  a img {
+    width: 80%;
+    margin-bottom: 20px;
+  }
 }
 .container-card-player-full {
   text-align: center;

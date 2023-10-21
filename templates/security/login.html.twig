@@ -5,19 +5,24 @@
 {% block body %}
     <h1>Connexion</h1>
 
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+    <div class="my-form-container">
 
-        <label for="username">Username</label>
-        <input type="text" value="{{ last_username }}" name="_username" id="username" autocomplete="username" required autofocus>
+        <form method="post">
+            {% if error %}
+                <div class="my-form-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
 
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" autocomplete="current-password" required>
+            <label for="username">Username</label>
+            <input type="text" value="{{ last_username }}" name="_username" id="username" autocomplete="username" required autofocus>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <label for="password">Password</label>
+            <input type="password" name="_password" id="password" autocomplete="current-password" required>
 
-        <button type="submit">Connexion</button>
-    </form>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a>
+
+            <button type="submit">Connexion</button>
+        </form>
+    </div>
 {% endblock %}

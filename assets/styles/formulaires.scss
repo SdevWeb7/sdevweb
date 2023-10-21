@@ -1,0 +1,59 @@
+.my-form-container {
+  margin-top: 50px;
+
+  form {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.74);
+
+    label {
+      padding: 5px;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    input {
+      max-width: 400px;
+      padding: 15px;
+      border-radius: 3px;
+      background-color: whitesmoke;
+    }
+    button {
+      margin-top: 30px;
+      align-self: center;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      background: linear-gradient(179deg, #ffffff, #eee9e9);
+      opacity: .7;
+      color: black;
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    a {
+      text-align: right;
+      margin-top: 20px;
+      text-decoration: none;
+      color: grey;
+      &:hover {
+        color: black;
+      }
+    }
+
+    .agreeTerms {
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .my-form-error {
+      color: red;
+    }
+    li {
+      color: red;
+    }
+  }
+}

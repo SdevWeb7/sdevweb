@@ -1,14 +1,15 @@
+import React from "react";
 import { Await, useParams } from "react-router-dom";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useFetch } from "../hooks/useFetch";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { CardPlayerFull } from "../components/CardPlayerFull";
 
-export function Video () {
+export function MyReact () {
    const param = useParams()
-   useDocumentTitle(`Video ${param.id}`);
+   useDocumentTitle(`React ${param.id}`);
 
-   const {datas, loading, error} = useFetch(`https://localhost:8000/api/videos/${param.id}`)
+   const {datas, loading, error} = useFetch(`https://localhost:8000/api/reacts/${param.id}`)
 
 
    if (error) {
@@ -20,8 +21,6 @@ export function Video () {
 
    return (
       <>
-      <h1>Vidéo {param.id}</h1>
-
          <Suspense fallback={<div>Chargement...</div>}>
             <Await resolve={datas} errorElement={<div>Erreur</div>}>
                {datas ? <CardPlayerFull video={datas} /> : 'Erreur de chargement'}

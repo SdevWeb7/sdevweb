@@ -1,0 +1,151 @@
+.dark-theme {
+
+  background-color: #0F0F0F;
+  color: grey;
+
+  svg {
+    color: grey;
+    fill: grey;
+    background-color: transparent;
+
+    &:hover {
+      fill: whitesmoke;
+      color: whitesmoke;
+    }
+
+  }
+  * {
+    background-color: #0F0F0F;
+  }
+
+  hr {
+    color: black;
+  }
+
+  a {
+    color: grey;
+
+    &:hover {
+      color: whitesmoke;
+    }
+
+    &.active {
+      color: whitesmoke;
+    }
+  }
+
+
+  .my-header {
+    background-color: #0F0F0F;
+
+    .my-navbar {
+      a {
+        color: grey;
+
+        &:hover {
+          color: whitesmoke;
+        }
+
+        &.active {
+          color: whitesmoke;
+        }
+      }
+    }
+  }
+
+  .my-menu-deroulant {
+    background-color: #272727;
+    border-color: whitesmoke;
+    a {
+      color: grey;
+      background-color: #272727;
+
+      &:hover {
+        color: whitesmoke;
+      }
+      &.active {
+        color: whitesmoke;
+      }
+    }
+  }
+
+  .my-footer {
+    background-color: #0F0F0F;
+
+    a {
+      color: grey;
+
+      &:hover {
+        color: whitesmoke;
+      }
+
+      &.active {
+        color: whitesmoke;
+      }
+    }
+    svg {
+      fill: grey;
+
+      &:hover {
+        fill: whitesmoke;
+      }
+    }
+  }
+
+  form {
+    background-color: #272727;
+    box-shadow: 0px 0px 5px 5px rgba(230, 230, 230, 0.74);
+
+    * {
+      background-color: #272727;
+    }
+    input {
+      background-color: #272727;
+      color: whitesmoke;
+      border-color: whitesmoke;
+    }
+    a:hover {
+      color: whitesmoke;
+    }
+
+    button {
+      background: linear-gradient(179deg, #272727, #0F0F0F);
+      opacity: .7;
+      color: whitesmoke;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .my-search {
+    input {
+      border-color: whitesmoke;
+      color: whitesmoke;
+      background-color: #272727;
+    }
+  }
+  .container-card-player {
+    border-color: whitesmoke;
+  }
+
+  .my-toast {
+    background-color: #272727;
+    border: 1px solid whitesmoke;
+
+    button {
+      background-color: #272727;
+      color: grey;
+
+      &:hover {
+      color: whitesmoke;
+    }
+    }
+    p {
+      background-color: #272727;
+      color: whitesmoke;
+      padding: 0 15px;
+    }
+  }
+}

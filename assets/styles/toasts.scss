@@ -1,0 +1,29 @@
+.my-toast {
+  position: fixed;
+  bottom: 5px;
+  left: 0;
+  width: 180px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  overflow: hidden;
+  word-break: break-word;
+  z-index: 50;
+  min-height: 120px;
+
+  button {
+    align-self: end;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: grey;
+    &:hover {
+      color: black;
+    }
+  }
+  p {
+    padding: 0 15px;
+  }
+}

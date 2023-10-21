@@ -3,18 +3,32 @@
 @import "videos";
 @import "header-right";
 @import "menu_and_search";
+@import "formulaires";
+@import "dark-theme";
+@import "toasts";
 
 html, body {
     padding: 0;
-    margin: 33px 10px 25px 10px;
+    margin: 33px 10px 35px 10px;
     box-sizing: border-box;
     background-color: whitesmoke;
     font-family: Inter, sans-serif;
 }
 h1 {
     text-align: center;
-    font-size: 32px;
+    font-size: 38px;
+    margin-top: 40px;
 }
 h2, p {
     text-align: center;
+}
+a {
+    color: grey;
+    text-decoration: none;
+    &:hover {
+        color: black;
+    }
+    &.active {
+        color: black;
+    }
 }

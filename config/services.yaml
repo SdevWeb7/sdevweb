@@ -35,6 +35,18 @@ services:
         tags:
             - { name: 'kernel.event_listener', event: 'Symfony\Component\Security\Http\Event\LogoutEvent', dispatcher: 'security.event_dispatcher.main' }
 
+    App\EventListener\MyCustomLoginListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'Symfony\Component\Security\Http\Event\LoginSuccessEvent', dispatcher: 'security.event_dispatcher.main' }
+
+
+    App\EventListener\ThemeListener:
+        arguments:
+            $twig: '@twig'
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: __invoke }
+
+
     App\MessageHandler\ValidEmailHandler:
         arguments:
             $emailVerifier: '@App\Security\EmailVerifier'

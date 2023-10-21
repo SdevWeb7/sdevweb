@@ -14,6 +14,7 @@ class EventCompteur implements EventSubscriberInterface
 
    public function compteur(): void
    {
+
       $this->compteur->incrementer();
       $this->twig->addGlobal('compteur', $this->compteur->recuperer());
    }

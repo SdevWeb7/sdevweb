@@ -17,7 +17,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class VideoRepository extends ServiceEntityRepository
 {
-   public const PAGINATOR_PER_PAGE = 5;
+   public const PAGINATOR_PER_PAGE = 1;
    public function __construct(ManagerRegistry $registry)
    {
       parent::__construct($registry, Video::class);

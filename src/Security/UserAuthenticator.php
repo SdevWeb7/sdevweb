@@ -48,9 +48,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
          return new RedirectResponse($targetPath);
       }
 
-      $request->getSession()->getFlashBag()->add('success', 'Vous êtes connecté');
       return new RedirectResponse($this->urlGenerator->generate('app_home'));
-
    }
 
    protected function getLoginUrl(Request $request): string

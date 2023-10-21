@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html-theme" class="{{ themeSombre ? "dark-theme" : "" }}">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -22,8 +22,21 @@
         {% block body %}{% endblock %}
 
         <div {{ react_component('components/Footer', {
-            user: app.user ? app.user.username : null
+            user: app.user ? app.user.username : null,
+            themeSombre: themeSombre ?? false
         }) }}></div>
+
+
+        {% set messages = [] %}
+        {% for type, message in app.flashes %}
+            {% set messages = messages|merge(message) %}
+        {% endfor %}
+        {% if messages is not empty %}
+            <div {{ react_component('components/Toast', {
+                content: messages,
+                duration: 5
+            }) }}></div>
+        {% endif %}
 
     </body>
 </html>

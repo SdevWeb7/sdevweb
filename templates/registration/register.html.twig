@@ -5,23 +5,32 @@
 {% block body %}
     <h1>Inscription</h1>
 
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div role="alert">{{ flash_error }}</div>
-    {% endfor %}
+    <div class="my-form-container">
+
+        <p style="color: red">{{ form_errors(registrationForm) }}</p>
+
+        {{ form_start(registrationForm) }}
+            {{ form_label(registrationForm.username) }}
+            {{ form_widget(registrationForm.username) }}
+            {{ form_errors(registrationForm.username) }}
+
+            {{ form_label(registrationForm.email) }}
+            {{ form_widget(registrationForm.email) }}
+            {{ form_errors(registrationForm.email) }}
 
 
-    {{ form_errors(registrationForm) }}
+            {{ form_label(registrationForm.plainPassword.first) }}
+            {{ form_widget(registrationForm.plainPassword.first) }}
+            {{ form_errors(registrationForm.plainPassword.first) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
+            {{ form_label(registrationForm.plainPassword.second) }}
+            {{ form_widget(registrationForm.plainPassword.second) }}
 
-        {{ form_row(registrationForm.email) }}
-
-        {{ form_row(registrationForm.plainPassword.first) }}
-        {{ form_row(registrationForm.plainPassword.second) }}
-
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_errors(registrationForm.agreeTerms) }}
 
         <button type="submit">Inscription</button>
-    {{ form_end(registrationForm) }}
+        {{ form_end(registrationForm) }}
+    </div>
+
 {% endblock %}

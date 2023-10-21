@@ -1,0 +1,12 @@
+{% if videos|length > 0 %}
+    <p>{{ videos|length }} Vidéos</p>
+{% endif %}
+<div style="text-align: center; margin: 30px;">
+    {% if previous >= 0 %}
+        <a style="margin-right: 20px" href="{{ path('app_videos', { offset: previous }) }}">Page Précédente</a>
+    {% endif %}
+
+    {% if next < videos|length %}
+        <a href="{{ path('app_videos', { offset: next }) }}">Page Suivante</a>
+    {% endif %}
+</div>

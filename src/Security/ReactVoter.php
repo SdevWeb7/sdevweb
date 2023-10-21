@@ -5,11 +5,11 @@ namespace App\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-class VideoVoter implements VoterInterface {
+class ReactVoter implements VoterInterface {
 
-   const VIDEO_VOTER = 'VIDEO_VOTER';
+   const REACT_VOTER = 'REACT_VOTER';
 
-   public function vote (TokenInterface $token, mixed $subject, array $attributes) {
+   public function vote (TokenInterface $token, mixed $subject, array $attributes) : bool {
 
       return true;
    }

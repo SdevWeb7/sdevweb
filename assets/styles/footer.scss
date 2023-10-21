@@ -4,6 +4,7 @@
   right: 15px;
   left: 15px;
   background-color: whitesmoke;
+  padding-bottom: 5px;
 
   .footer-container {
     display: flex;
@@ -30,5 +31,18 @@
     padding: 0;
     margin: 0;
     transform: translateY(7px) translateX(5px);
+    cursor: pointer;
+  }
+  .svg-theme {
+    margin: 0 35px 0 auto;
+    padding-bottom: 8px;
+    width: 26px;
+    height: 26px;
+    scale: .7;
+    transform: translateY(-1px);
+    use {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

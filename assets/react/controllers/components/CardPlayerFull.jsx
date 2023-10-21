@@ -5,7 +5,7 @@ export function CardPlayerFull ({video}) {
 
    return (
       <div className={'container-card-player-full'}>
-         <h2>{video.title}</h2>
+         <h1>{video.title}</h1>
 
          <p>{video.description}</p>
 

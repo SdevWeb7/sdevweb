@@ -14,7 +14,7 @@ export function MySearchSvg () {
             <svg onClick={toggleSearch}><use href="/sprite.svg#search"></use></svg>
          </div>
 
-         {showSearch && <MySearch toggleSearch={toggleSearch} show={showSearch} />}
+         {showSearch && <MySearch toggleSearch={toggleSearch} />}
       </>
    )
 }

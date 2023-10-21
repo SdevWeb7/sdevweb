@@ -1,30 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="form-container">
+    <h1>Reinitialisation du mot de passe</h1>
+    <div class="my-form-container">
 
         {{ form_start(resetForm) }}
-        <div class="form-labels">
-            {{ form_label(resetForm.plainPassword.first) }}
-        </div>
-        <div class="form-fields">
-            {{ form_widget(resetForm.plainPassword.first) }}
-        </div>
-        <div class="form-errors">
-            {{form_errors(resetForm.plainPassword.first) }}
-        </div>
 
-        <div class="form-labels">
-            {{ form_label(resetForm.plainPassword.second) }}
-        </div>
-        <div class="form-fields">
-            {{ form_widget(resetForm.plainPassword.second) }}
-        </div>
-        <div class="form-errors">
-            {{form_errors(resetForm.plainPassword.second) }}
-        </div>
+        {{ form_label(resetForm.plainPassword.first) }}
+        {{ form_widget(resetForm.plainPassword.first) }}
+        {{ form_errors(resetForm.plainPassword.first) }}
 
-        <button type="submit" class="btn-submit" style="margin-top: 30px">Réinitialiser mot de passe</button>
+
+        {{ form_label(resetForm.plainPassword.second) }}
+        {{ form_widget(resetForm.plainPassword.second) }}
+        {{ form_errors(resetForm.plainPassword.second) }}
+
+
+        <button type="submit" style="margin-top: 30px">Réinitialiser mot de passe</button>
         {{ form_end(resetForm) }}
 
     </div>
