@@ -3,7 +3,7 @@ import { useScrollY } from "../hooks/useScrollY";
 import { motion } from "framer-motion";
 import { classMaker } from "./classMaker";
 
-export function Footer ({user, themeSombre}) {
+export function Footer ({user, themeSombre, admin}) {
    const {isScrolledTop} = useScrollY({baseState: false});
    const [iconTheme, setIconTheme] = useState(themeSombre? 'sun' : 'moon')
 
@@ -34,6 +34,11 @@ export function Footer ({user, themeSombre}) {
                   <>
                      <a href="/logout"><svg><use href="/sprite.svg#svg-logout"></use></svg></a>
                      <a href="#">{user}</a>
+
+                     {admin && <>
+                        <a href={'/admin'}>Admin</a>
+                        <a href="/react-api" className={classMaker("/react-api")}>React</a>
+                     </>}
                      <svg className={'svg-theme'} onClick={handleTheme}><use href={`/sprite.svg#icon-${iconTheme}`}></use></svg>
                   </> :
                   <>

@@ -24,6 +24,9 @@ class Video
    #[ORM\Column(length: 255)]
    private ?string $description = null;
 
+   #[ORM\Column(length: 255, nullable: false)]
+   private ?string $category = null;
+
 
    public function getId(): ?int
    {
@@ -61,6 +64,18 @@ class Video
 
    public function setTitle (?string $title) : void {
       $this -> title = $title;
+   }
+
+   public function getCategory(): ?string
+   {
+       return $this->category;
+   }
+
+   public function setCategory(?string $category): static
+   {
+       $this->category = $category;
+
+       return $this;
    }
 
 

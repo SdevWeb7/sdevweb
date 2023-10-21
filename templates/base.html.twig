@@ -21,9 +21,15 @@
 
         {% block body %}{% endblock %}
 
+        {% set admin = false %}
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            {% set admin = true %}
+        {% endif %}
+
         <div {{ react_component('components/Footer', {
             user: app.user ? app.user.username : null,
-            themeSombre: themeSombre ?? false
+            themeSombre: themeSombre ?? false,
+            admin: admin
         }) }}></div>
 
 

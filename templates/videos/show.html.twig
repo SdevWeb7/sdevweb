@@ -6,7 +6,9 @@
 
     <div class="container-card-player-full">
 
-        <p>{{ video.description }}</p>
+        <p><b>Catégorie :</b> {{ video.category }}</p>
+        <p><b>Description :</b> {{ video.description }}</p>
+
 
         <p><a target="_blank" href="{{ video.url }}">Lien source</a></p>
         {{ video.url|youtube_player|raw }}

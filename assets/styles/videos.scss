@@ -5,27 +5,39 @@
 }
 .container-card-player {
   border: 1px solid black;
-  width: 350px;
+  border-radius: 3px;
+  width: 300px;
   overflow: hidden;
   text-align: center;
   margin: 20px;
 
   a img {
-    width: 80%;
+    width: 260px;
+    height: 200px;
     margin-bottom: 20px;
   }
 }
 .container-card-player-full {
   text-align: center;
   width: 95%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 10px;
 
   p {
     margin-bottom: 40px;
   }
+
+  iframe {
+    width: 100%;
+    height: 50vw;
+  }
+}
+.videos-categories {
+  display: flex;
+  border: 1px solid black;
+  flex-direction: column;
+  border-radius: 3px;
 }

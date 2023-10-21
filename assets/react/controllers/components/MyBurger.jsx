@@ -15,10 +15,7 @@ export const MyBurger = ({user}) => {
       hidden: {rotate: 120, opacity: 0, transition: {duration: .7}}
    }
 
-   const toggleBurger = (e) => {
-      if (e) {
-         e.stopPropagation()
-      }
+   const toggleBurger = () => {
       setShowMenu(v => !v);
    }
 
@@ -30,7 +27,7 @@ export const MyBurger = ({user}) => {
             </AnimatePresence>
 
             <AnimatePresence>
-               {showMenu && <motion.svg onClick={toggleBurger} animate={showMenu ? 'visible' : 'hidden'} exit={'hidden'} variants={burgerVariantClose}><use href="/sprite.svg#my-burger-close"></use></motion.svg>}
+               {showMenu && <motion.svg animate={showMenu ? 'visible' : 'hidden'} exit={'hidden'} variants={burgerVariantClose}><use href="/sprite.svg#my-burger-close"></use></motion.svg>}
             </AnimatePresence>
 
             <AnimatePresence>

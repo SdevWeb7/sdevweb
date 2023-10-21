@@ -13,6 +13,11 @@ html, body {
     box-sizing: border-box;
     background-color: whitesmoke;
     font-family: Inter, sans-serif;
+
+    * {
+    scrollbar-color: #346abf white;
+    scrollbar-size: 5px;
+    }
 }
 h1 {
     text-align: center;
@@ -31,4 +36,16 @@ a {
     &.active {
         color: black;
     }
+}
+
+body::-webkit-scrollbar {
+    width: 18px;
+}
+body::-webkit-scrollbar-track {
+    background: white;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: whitesmoke;
+    border-radius: 3px;
+    border: 1px solid black;
 }
