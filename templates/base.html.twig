@@ -38,12 +38,12 @@
         {% for type, message in app.flashes %}
             {% set messages = messages|merge(message) %}
         {% endfor %}
-        {% if messages is not empty %}
-            <div {{ react_component('components/Toast', {
-                content: messages,
-                duration: 5
-            }) }}></div>
-        {% endif %}
+
+        <div {{ react_component('components/Toast', {
+            content: messages,
+            duration: 5
+        }) }}></div>
+
 
     </body>
 </html>

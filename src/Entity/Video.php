@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VideoRepository::class)]
@@ -26,6 +28,14 @@ class Video
 
    #[ORM\Column(length: 255, nullable: false)]
    private ?string $category = null;
+
+   #[ORM\OneToMany(mappedBy: 'toVideo', targetEntity: Like::class, orphanRemoval: true)]
+   private Collection $likes;
+
+   public function __construct()
+   {
+       $this->likes = new ArrayCollection();
+   }
 
 
    public function getId(): ?int
@@ -74,6 +84,36 @@ class Video
    public function setCategory(?string $category): static
    {
        $this->category = $category;
+
+       return $this;
+   }
+
+   /**
+    * @return Collection<int, Like>
+    */
+   public function getLikes(): Collection
+   {
+       return $this->likes;
+   }
+
+   public function addLike(Like $like): static
+   {
+       if (!$this->likes->contains($like)) {
+           $this->likes->add($like);
+           $like->setToVideo($this);
+       }
+
+       return $this;
+   }
+
+   public function removeLike(Like $like): static
+   {
+       if ($this->likes->removeElement($like)) {
+           // set the owning side to null (unless already changed)
+           if ($like->getToVideo() === $this) {
+               $like->setToVideo(null);
+           }
+       }
 
        return $this;
    }

@@ -6,6 +6,11 @@
 
     <div class="container-card-player-full">
 
+        <div {{ react_component('components/Like', {
+            username: app.user ? app.user.username : null
+            videoId: video.id
+        }) }}></div>
+
         <p><b>Catégorie :</b> {{ video.category }}</p>
         <p><b>Description :</b> {{ video.description }}</p>
 
