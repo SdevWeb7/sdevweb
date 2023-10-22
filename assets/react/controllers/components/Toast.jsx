@@ -8,7 +8,7 @@ export function Toast ({content, duration, color = 'grey'}) {
    const [open, setOpen] = useState(true)
    const [contents, setContents] = useState(content)
 
-   const handleLikeUpdated = (datas) => {
+   const handleToastMessage = (datas) => {
       setOpen(true)
       setContents(datas)
    }
@@ -18,10 +18,10 @@ export function Toast ({content, duration, color = 'grey'}) {
          setOpen(false)
       }, duration * 1000)
 
-      eventBus.on('likeUpdated', handleLikeUpdated);
+      eventBus.on('ToastMessage', handleToastMessage);
 
       return () => {
-         eventBus.off('likeUpdated', handleLikeUpdated);
+         eventBus.off('ToastMessage', handleToastMessage);
       }
    }, [open])
 
@@ -34,7 +34,7 @@ export function Toast ({content, duration, color = 'grey'}) {
    <>
       {contents && contents.length > 0 && <motion.div className="my-toast" style={style} initial={'hidden'} animate={open ? 'visible' : 'hidden'} variants={variants} exit={'hidden'}>
          <button onClick={() => setOpen(false)}>X</button>
-         {contents.length > 0 && contents.map(message => <p key={Date.now()}>{message}</p>)}
+         {contents.length > 0 && contents.map(message => <p key={Math.floor(Math.random() * 1000)}>{message}</p>)}
       </motion.div>}
    </>
    )

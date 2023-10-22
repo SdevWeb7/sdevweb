@@ -17,15 +17,15 @@ export function Like ({isLiked, videoId, nbLikes}) {
       })
 
       if (!result.ok) {
-         eventBus.emit('likeUpdated', ['Problème de connexion']);
+         eventBus.emit('ToastMessage', ['Problème de connexion']);
       } else {
          const json = await result.json()
          if (typeof json.nbLikes === 'number') {
             setLiked(v => v === 'unlike' ? 'like' : 'unlike')
             setNbLike(json.nbLikes)
-            eventBus.emit('likeUpdated', [json.likeState]);
+            eventBus.emit('ToastMessage', [json.likeState]);
          } else {
-            eventBus.emit('likeUpdated', ['Veuillez vous connecter']);
+            eventBus.emit('ToastMessage', ['Veuillez vous connecter']);
          }
       }
    }

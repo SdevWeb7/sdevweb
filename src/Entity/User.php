@@ -46,9 +46,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'fromUser', targetEntity: Like::class, orphanRemoval: true)]
     private Collection $likes;
 
+    #[ORM\OneToMany(mappedBy: 'fromUser', targetEntity: Todo::class, orphanRemoval: true)]
+    private Collection $todos;
+
     public function __construct()
     {
         $this->likes = new ArrayCollection();
+        $this->todos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -155,6 +159,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
            // set the owning side to null (unless already changed)
            if ($like->getFromUser() === $this) {
                $like->setFromUser(null);
+           }
+       }
+
+       return $this;
+   }
+
+   /**
+    * @return Collection<int, Todo>
+    */
+   public function getTodos(): Collection
+   {
+       return $this->todos;
+   }
+
+   public function addTodo(Todo $todo): static
+   {
+       if (!$this->todos->contains($todo)) {
+           $this->todos->add($todo);
+           $todo->setFromUser($this);
+       }
+
+       return $this;
+   }
+
+   public function removeTodo(Todo $todo): static
+   {
+       if ($this->todos->removeElement($todo)) {
+           // set the owning side to null (unless already changed)
+           if ($todo->getFromUser() === $this) {
+               $todo->setFromUser(null);
            }
        }
 

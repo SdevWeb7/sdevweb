@@ -14,10 +14,4 @@ class HomeController extends AbstractController
        return $this->render('home/index.html.twig');
     }
 
-    #[Route('/react-api/{reactRouting}', name: 'app_react', defaults: ['reactRouting' => null])]
-    public function react() : Response
-    {
-        return $this->render('home/react.html.twig');
-    }
-
 }

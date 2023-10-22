@@ -5,9 +5,9 @@ namespace App\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 
-class ReactVoter implements VoterInterface {
+class TodoVoter implements VoterInterface {
 
-   const REACT_VOTER = 'REACT_VOTER';
+   const TODO_VOTER = 'TODO_VOTER';
 
    public function vote (TokenInterface $token, mixed $subject, array $attributes) : bool {
 

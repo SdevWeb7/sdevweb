@@ -37,7 +37,6 @@ export function Footer ({user, themeSombre, admin}) {
 
                      {admin && <>
                         <a href={'/admin'}>Admin</a>
-                        <a href="/react-api" className={classMaker("/react-api")}>React</a>
                      </>}
                      <svg className={'svg-theme'} onClick={handleTheme}><use href={`/sprite.svg#icon-${iconTheme}`}></use></svg>
                   </> :
