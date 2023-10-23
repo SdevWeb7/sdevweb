@@ -9,14 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TodoController extends AbstractController {
 
-   public function __invoke (Todo $data) : Todo  {
+   public function __invoke (Todo $data) : Todo {
       return $data;
    }
 
 
-   #[Route('/todos/{reactRouting}', name: 'app_todos', defaults: ['reactRouting' => null])]
-   public function todo() : Response
-   {
-      return $this->render('todos/todos.html.twig');
+   #[Route( '/todos/{reactRouting}', name: 'app_todos', defaults: ['reactRouting' => null] )]
+   public function todo () : Response {
+      return $this -> render('todos/todos.html.twig');
    }
+
 }

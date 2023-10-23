@@ -10,10 +10,6 @@ export const MyBurger = ({user}) => {
          visible: {rotate: 0, opacity: 1, transition: {duration: .5}},
          hidden: {rotate: -120, opacity: 0, transition: {duration: .5}}
    }
-   const burgerVariantClose = {
-      visible: {rotate: 0, opacity: 1, transition: {duration: .7}},
-      hidden: {rotate: 120, opacity: 0, transition: {duration: .7}}
-   }
 
    const toggleBurger = () => {
       setShowMenu(v => !v);
@@ -26,9 +22,7 @@ export const MyBurger = ({user}) => {
                {!showMenu && <motion.svg onClick={toggleBurger} animate={!showMenu ? 'visible' : 'hidden'} exit={'hidden'} variants={burgerVariant}><use href="/sprite.svg#my-burger-open"></use></motion.svg>}
             </AnimatePresence>
 
-            <AnimatePresence>
-               {showMenu && <motion.svg animate={showMenu ? 'visible' : 'hidden'} exit={'hidden'} variants={burgerVariantClose}><use href="/sprite.svg#my-burger-close"></use></motion.svg>}
-            </AnimatePresence>
+
 
             <AnimatePresence>
                {showMenu &&

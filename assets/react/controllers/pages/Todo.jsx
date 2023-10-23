@@ -1,29 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { useDocumentTitle } from "../hooks/useDocumentTitle";
-import { useFetch } from "../hooks/useFetch";
 
-export function Todo () {
-
-   const fromUser = useParams()
-
-   useDocumentTitle(`Todo de ${fromUser.id}`);
-
-   const {datas, loading, error} = useFetch(`https://localhost:8000/api/todos/${fromUser.id}`)
-
-
-   if (error) {
-      return <div>Erreur</div>
-   }
-   if (loading) {
-      return <div>Chargement...</div>
-   }
+export function Todo ({todo, dispatch}) {
 
    return (
-      <>
+         <div className="todo">
 
-      </>
+            <svg className={`icon-check ${todo.isDone ? 'checked' : ''}`} onClick={() => dispatch({type: 'TOGGLE_TODO', payload: todo})}><use href={'/sprite.svg#icon-check'}></use></svg>
+
+            <p>{todo.content}</p>
+
+            <svg className={'icon-cross'} onClick={() => dispatch({type: 'DELETE_TODO', payload: todo})}><use href={'/sprite.svg#icon-cross'}></use></svg>
+         </div>
    )
 }
-
 export default Todo;

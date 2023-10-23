@@ -8,7 +8,7 @@ export function Like ({isLiked, videoId, nbLikes}) {
 
    const handleLike = async (e) => {
       e.preventDefault();
-      const result = await fetch(`https://localhost:8000/like/${videoId}`, {
+      const result = await fetch(`https://127.0.0.1:8000/like/${videoId}`, {
          headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

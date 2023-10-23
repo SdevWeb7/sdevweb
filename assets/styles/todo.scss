@@ -1,0 +1,183 @@
+@font-face {
+  font-family: Josefin;
+  src: url(./JosefinSans-VariableFont_wght.ttf);
+}
+.container-todos {
+  font-family: Josefin;
+  overflow: hidden;
+  width: 100%;
+  min-height: 80vh;
+  background-image: url(../../public/images/bg-desktop-light.jpg);
+  background-size: 100vw 45vh;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  z-index: -1;
+
+  h1 {
+    text-align: center;
+    color: whitesmoke;
+    padding-top: 40px;
+  }
+
+  .add-todo {
+    width: 90%;
+    max-width: 700px;
+    margin: 20px auto 10px auto;
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    box-shadow: none;
+
+    input {
+      width: 60%;
+      padding: 20px;
+      border-radius: 6px;
+      border: none;
+      margin: auto;
+      box-shadow: none;
+    }
+  }
+
+  .todo {
+    cursor: pointer;
+    width: 90%;
+    max-width: 700px;
+    min-height: 40px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid lightgray;
+
+    p {
+      color: grey;
+      padding: 0;
+      width: 60%;
+      margin-right: auto;
+    }
+  }
+
+
+  .icon-check {
+    width: 15px;
+    height: 15px;
+    padding: 1px;
+    margin: auto auto auto 10px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid black;
+    opacity: .7;
+
+    use {
+      transform: translateX(3px) translateY(3px);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.checked {
+      background: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    }
+  }
+    svg{
+      z-index: 0;
+    }
+  .icon-cross {
+    width: 20px;
+    height: 20px;
+    margin: auto 10px auto 0;
+    cursor: pointer;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .filter-todos {
+    background-color: white;
+    width: 90%;
+    max-width: 300px;
+    margin: 0px auto 10px auto;
+    border-radius: 3px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid black;
+
+    button {
+      color: grey;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        color: black;
+      }
+      &.active {
+        color: black;
+      }
+    }
+  }
+  .dragging {
+    opacity: .4;
+  }
+}
+/*********** DARK theme ***************/
+.dark-theme {
+  .container-todos {
+    background-image: url(../../public/images/bg-desktop-dark.jpg);
+
+    h1 {
+      color: whitesmoke;
+      background-color: transparent;
+
+    }
+    .add-todo {
+      background-color: #272727;
+      border: 1px solid whitesmoke;
+      box-shadow: none;
+
+    }
+
+    .todo {
+      background-color: #272727;
+      border: 1px solid grey;
+
+      p {
+        color: grey;
+        background-color: transparent;
+      }
+    }
+
+    .icon-check {
+      border: 2px solid whitesmoke;
+    }
+    .icon-cross:hover {
+      stroke: whitesmoke;
+    }
+
+    .filter-todos {
+      background-color: #272727;
+      border: 1px solid whitesmoke;
+
+      button {
+        color: grey;
+        background-color: #272727;
+        border: none;
+        &:hover {
+          color: whitesmoke;
+        }
+        &.active {
+          color: white;
+        }
+      }
+    }
+  }
+}

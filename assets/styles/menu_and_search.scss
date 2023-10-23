@@ -12,6 +12,7 @@
   }
 }
 
+
 .my-menu-deroulant {
   position: fixed;
   top: 0;
@@ -24,6 +25,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  z-index: 1000;
+
+  svg {
+    cursor: pointer;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 15px;
+    right: 15px;
+    z-index: 1001;
+  }
 
   a {
     text-decoration: none;
