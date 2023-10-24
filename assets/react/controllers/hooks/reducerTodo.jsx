@@ -3,10 +3,14 @@ import React, { useReducer } from "react";
 export function useTodos () {
    const [state, dispatch] = useReducer(reducerTodo, {filter: 'all', todos: []})
 
-   return [
+   return {
       state,
-      dispatch
-   ]
+      addTodo: (todo) => dispatch({type: 'ADD_TODO', payload: todo}),
+      toggleTodo: (todoId) => dispatch({type: 'TOGGLE_TODO', payload: todoId}),
+      deleteTodo: (todo) => dispatch({type: 'DELETE_TODO', payload: todo}),
+      filterTodos: (filter) => dispatch({type: 'FILTER', payload: filter}),
+      clearTodos: () => dispatch({type: 'CLEAR_ALL_TODOS'}),
+   }
 }
 function reducerTodo (state, action) {
 

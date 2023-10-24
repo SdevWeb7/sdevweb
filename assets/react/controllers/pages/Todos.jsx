@@ -11,7 +11,7 @@ export function Todos () {
    const inputRef = useRef()
    const [todos, setTodos] = useState([])
    const {datas, loading, error} = useFetch('https://localhost:8000/api/todos')
-   const [state, dispatch] = useTodos()
+   const {state, clearTodos, filterTodos, addTodo, deleteTodo, toggleTodo} = useTodos()
    const filterTodo = useRef()
 
    useEffect(() => {
@@ -40,14 +40,14 @@ export function Todos () {
    }, [state.todos])
 
 
-   const addTodo = (e) => {
+   const handleAddTodo = (e) => {
       e.preventDefault()
       const todo = {
          id: Date.now(),
          content: inputRef.current.value,
          isDone: svgChecked
       }
-      dispatch({type: 'ADD_TODO', payload: todo})
+      addTodo(todo)
       inputRef.current.value = ''
    }
 
@@ -74,22 +74,22 @@ export function Todos () {
          <div className="container-todos">
             <h1>TodoList</h1>
 
-            <form className={'add-todo'} onSubmit={addTodo}>
+            <form className={'add-todo'} onSubmit={handleAddTodo}>
                <svg className={`icon-check ${svgChecked ? 'checked' : ''}`} onClick={() => setSvgChecked(v => v ? false : true)}><use href={'/sprite.svg#icon-check'}></use></svg>
 
                <input ref={inputRef} type="text" placeholder={'Create a todo...'} />
 
-               <svg className={`icon-cross`} style={{transform: 'rotate(45deg)'}} onClick={addTodo}><use href={'/sprite.svg#icon-cross'}></use></svg>
+               <svg className={`icon-cross`} style={{transform: 'rotate(45deg)'}} onClick={handleAddTodo}><use href={'/sprite.svg#icon-cross'}></use></svg>
             </form>
 
 
             <div className="filter-todos" ref={filterTodo}>
-               <button className={'all-todo'} onClick={()=> dispatch({type: 'FILTER', payload: 'all'})}>All</button>
+               <button className={'all-todo'} onClick={()=> filterTodos('all')}>All</button>
 
-               <button className={'all-to-do'} onClick={()=> dispatch({type: 'FILTER', payload: 'todo'})}>Todos</button>
-               <button className={'all-completed active'} onClick={()=> dispatch({type: 'FILTER', payload: 'completed'})}>Completed</button>
+               <button className={'all-to-do'} onClick={()=> filterTodos('todo')}>Todos</button>
+               <button className={'all-completed active'} onClick={() => filterTodos('completed')}>Completed</button>
 
-               <button onClick={() => dispatch({type: 'CLEAR_ALL_TODOS'})}>Clear</button>
+               <button onClick={() => clearTodos()}>Clear</button>
             </div>
 
 
@@ -97,7 +97,7 @@ export function Todos () {
             {error && <div>{error.toString()}</div>}
 
             <div id="dragula">
-               {filteredTodos.map(todo => <Todo key={todo.id} todo={todo} dispatch={dispatch} />)}
+               {filteredTodos.map(todo => <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />)}
             </div>
 
          </div>

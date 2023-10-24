@@ -3,10 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Delete;
-use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Post;
 use App\Controller\TodoController;
 use App\Repository\TodoRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -15,21 +12,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: TodoRepository::class)]
 #[ApiResource(
    operations: [
-      new Get(controller: TodoController::class, normalizationContext: [
-         'groups' => 'todo:item'
-      ], security: 'is_granted("TODO_VOTER", object)'),
-      new Post(controller: TodoController::class, normalizationContext: [
-         'groups' => 'todo:item'
-      ], security: 'is_granted("TODO_VOTER", object)'),
-      new Delete(),
-      new Post(controller: TodoController::class, normalizationContext: [
-         'groups' => 'todo:item'
-      ], security: 'is_granted("TODO_VOTER", object)'),
-      new GetCollection(normalizationContext: [
-         'groups' => 'todo:list'
-      ], security: 'is_granted("IS_AUTHENTICATED_FULLY")'),
-   ], order: ['content' => 'DESC'], paginationItemsPerPage: 8,
-)]
+      new GetCollection(controller: TodoController::class, normalizationContext: [
+         'groups' => ['todo:item', 'todo:list']
+      ]),
+//      new Post(controller: TodoController::class, normalizationContext: [
+//         'groups' => ['todo:item', 'todo:list']
+//      ], security: 'is_granted("NOT_ANONYME", object)'),
+   ])]
 #[ApiFilter(SearchFilter::class, properties: ['content' => 'exact'])]
 class Todo
 {
