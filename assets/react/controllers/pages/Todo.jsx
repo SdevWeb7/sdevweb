@@ -1,16 +1,27 @@
 import React from "react";
+import { ApiRequest } from "../components/todos/ApiRequest";
 import eventBus from "../hooks/eventBus";
 
 export function Todo ({username, todo, deleteTodo, toggleTodo}) {
 
-   const handleToggle = () => {
-      toggleTodo(todo)
-      ApiRequest(`https://localhost:8000/api/toggle-todo/${username}`, todo, 'Action réussi :)')
+   const handleToggle = async () => {
+      try {
+         await ApiRequest('toggle-todo', username, todo);
+         eventBus.emit('ToastMessage', ['Action réussi']);
+         toggleTodo(todo)
+      } catch (error) {
+         eventBus.emit('ToastMessage', ['Problème de connexion']);
+      }
    }
 
-   const handleDelete = () => {
-      deleteTodo(todo)
-      ApiRequest(`https://localhost:8000/api/delete-todo/${username}`, todo, 'Todo Supprimée :)')
+   const handleDelete = async () => {
+      try {
+         await ApiRequest('delete-todo', username, todo);
+         eventBus.emit('ToastMessage', ['Todo Supprimée']);
+         deleteTodo(todo)
+      } catch (error) {
+         eventBus.emit('ToastMessage', ['Problème de connexion']);
+      }
    }
 
    return (
@@ -25,19 +36,3 @@ export function Todo ({username, todo, deleteTodo, toggleTodo}) {
    )
 }
 export default Todo;
-
-export function ApiRequest (url, todo, message) {
-   fetch(url, {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ todo: todo })
-   })
-      .then(response => {
-         if (response.ok) {
-            eventBus.emit('ToastMessage', [message])
-         }
-      })
-      .catch(error => eventBus.emit('ToastMessage', ['Erreur de connexion']));
-}

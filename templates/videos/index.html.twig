@@ -25,20 +25,7 @@
         {% for video in videos %}
             <div class="container-card-player">
 
-                {% set liked = 'unlike' %}
-                {% if app.user %}
-                    {% for like in video.likes %}
-                        {% if like.fromUser.username is same as app.user.username %}
-                            {% set liked = 'like' %}
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-                <div {{ react_component('components/Like', {
-                    isLiked: liked,
-                    videoId: video.id,
-                    nbLikes: video.likes|length
-                }) }}></div>
-
+                {% include 'partials/_like.html.twig' %}
 
                 <p><b>Catégorie :</b> {{ video.category }}</p>
                 <p><b>Titre :</b> {{ video.title }}</p>

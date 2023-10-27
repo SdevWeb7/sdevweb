@@ -10,44 +10,61 @@ export function useTodos () {
       deleteTodo: (todo) => dispatch({type: 'DELETE_TODO', payload: todo}),
       filterTodos: (filter) => dispatch({type: 'FILTER', payload: filter}),
       clearTodos: () => dispatch({type: 'CLEAR_ALL_TODOS'}),
+      setTodos: (datas) => dispatch({type: 'SET_TODOS', payload: datas ? datas : []})
    }
 }
 function reducerTodo (state, action) {
 
-   if (action.type === 'DELETE_TODO') {
-      return {
-         ...state,
-         todos: state.todos.filter(todo => todo !== action.payload)
-      }
+   switch (action.type) {
+      case 'DELETE_TODO':
+         return {
+            ...state,
+            todos: state.todos.filter(todo => todo !== action.payload)
+         }
+         break
+
+      case 'TOGGLE_TODO':
+         return {
+            ...state,
+            todos: state.todos.map(todo => {
+               if (todo === action.payload) {
+                  return {...todo, isDone: !todo.isDone};
+               }
+               return todo;
+            })
+         }
+         break
+
+      case 'ADD_TODO':
+         return {
+            ...state,
+            todos: [...state.todos, action.payload]
+         }
+         break
+
+      case 'CLEAR_ALL_TODOS':
+         return {
+            ...state,
+            todos: []
+         }
+         break
+
+      case 'FILTER':
+         return {
+            ...state,
+            filter: action.payload
+         }
+         break
+
+      case 'SET_TODOS':
+         return {
+            ...state,
+            todos: action.payload
+         }
+         break
+
+      default:
+         return state
+
    }
-   if (action.type === 'TOGGLE_TODO') {
-      return {
-         ...state,
-         todos: state.todos.map(todo => {
-            if (todo === action.payload) {
-               return {...todo, isDone: !todo.isDone};
-            }
-            return todo;
-         })
-      }
-   }
-   if (action.type === 'ADD_TODO') {
-      return {
-         ...state,
-         todos: [...state.todos, action.payload]
-      }
-   }
-   if (action.type === 'CLEAR_ALL_TODOS') {
-      return {
-         ...state,
-         todos: []
-      }
-   }
-   if (action.type === 'FILTER') {
-      return {
-         ...state,
-         filter: action.payload
-      }
-   }
-   return state
 }

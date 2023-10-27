@@ -6,10 +6,7 @@
 
     <div class="container-card-player-full">
 
-        <div {{ react_component('components/Like', {
-            username: app.user ? app.user.username : null
-            videoId: video.id
-        }) }}></div>
+        {% include 'partials/_like.html.twig' %}
 
         <p><b>Catégorie :</b> {{ video.category }}</p>
         <p><b>Description :</b> {{ video.description }}</p>

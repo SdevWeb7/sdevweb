@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { ApiRequest } from "../../pages/Todo";
+import React, { useRef, useState } from "react";
+import { ApiRequest } from "./ApiRequest";
+import eventBus from "../../hooks/eventBus";
 
-export function AddTodo ({username, addTodo, inputRef}) {
+export function AddTodo ({username, addTodo}) {
    const [svgChecked, setSvgChecked] = useState(false)
+   const inputRef = useRef()
 
-   const handleAddTodo = (e) => {
+   const handleAddTodo = async (e) => {
       e.preventDefault()
       const todo = {
          id: Date.now(),
          content: inputRef.current.value,
          isDone: svgChecked
       }
-      addTodo(todo)
-      inputRef.current.value = ''
-      ApiRequest(`https://localhost:8000/api/add-todo/${username}`, todo, ['Todo ajoutée'])
+
+      try {
+         await ApiRequest('add-todo', username, todo);
+         eventBus.emit('ToastMessage', ['Todo Ajoutée']);
+         addTodo(todo)
+         inputRef.current.value = ''
+      } catch (error) {
+         eventBus.emit('ToastMessage', ['Problème de connexion']);
+      }
    }
 
 

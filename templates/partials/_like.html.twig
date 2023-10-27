@@ -1,0 +1,14 @@
+{% set liked = 'unlike' %}
+        {% if app.user %}
+            {% for like in video.likes %}
+                {% if like.fromUser.username is same as app.user.username %}
+                    {% set liked = 'like' %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+<div {{ react_component('components/Like', {
+    username: app.user ? app.user.username : 'anonymous',
+    isLiked: liked,
+    videoId: video.id,
+    nbLikes: video.likes|length
+}) }}></div>
