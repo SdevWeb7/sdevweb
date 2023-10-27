@@ -4,5 +4,7 @@
 
 {% block body %}
 
-    <div {{ react_component('App') }}></div>
+    <div {{ react_component('App', {
+        username: app.user ? app.user.username : 'anonymous'
+    }) }}></div>
 {% endblock %}
