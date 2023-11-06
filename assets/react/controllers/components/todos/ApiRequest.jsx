@@ -8,7 +8,7 @@ export async function ApiRequest (method, todo) {
                'Content-Type': 'application/json',
                'Accept': 'application/json'
             },
-            body: JSON.stringify({ todo: todo })
+            body: JSON.stringify(todo)
          })
          resolve(response)
       } catch (e) {

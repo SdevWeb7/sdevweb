@@ -25,7 +25,6 @@ class Todo
 
     #[ORM\ManyToOne(inversedBy: 'todos')]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(['api:todos'])]
     private ?User $fromUser = null;
 
     public function getId(): ?int

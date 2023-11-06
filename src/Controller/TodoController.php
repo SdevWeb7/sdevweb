@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class TodoController extends AbstractController {
 
@@ -38,20 +39,15 @@ class TodoController extends AbstractController {
    }
 
 
-   #[Route('/add-todo', name: 'app_add_todo', methods: ['POST'])]
-   public function add_todo (Request $request, EntityManagerInterface $manager) : JsonResponse
+   #[Route('/add-todo', name: 'app_add_todo')]
+   public function add_todo (Request $request, EntityManagerInterface $manager, SerializerInterface $serializer) : JsonResponse
    {
-
        if (!$this->getUser()) {
           return $this->json([]);
        }
-       $user = $this->getUser();
-       $data = json_decode($request->getContent(), true);
 
-       $todo = new Todo();
-       $todo->setContent($data['todo']['content']);
-       $todo->setIsDone($data['todo']['isDone']);
-       $todo->setFromUser($user);
+       $todo = $serializer->deserialize($request->getContent(), Todo::class, 'json', ['groups' => 'api:add:todo']);
+       $todo->setFromUser($this->getUser());
 
        $manager->persist($todo);
        $manager->flush();
@@ -69,7 +65,7 @@ class TodoController extends AbstractController {
 
       $data = json_decode($request->getContent(), true);
 
-      $todos = $repository->findBy(['fromUser' => $this->getUser(), 'content' => $data['todo']['content']]);
+      $todos = $repository->findBy(['fromUser' => $this->getUser(), 'content' => $data['content']]);
 
       foreach ($todos as $todo) {
          $todo->setIsDone(!$todo->isIsDone());
@@ -89,7 +85,7 @@ class TodoController extends AbstractController {
 
       $data = json_decode($request->getContent(), true);
 
-      $todos = $repository->findBy(['fromUser' => $this->getUser(), 'content' => $data['todo']['content']]);
+      $todos = $repository->findBy(['fromUser' => $this->getUser(), 'content' => $data['content']]);
 
       foreach ($todos as $todo) {
          $this->getUser()->removeTodo($todo);
