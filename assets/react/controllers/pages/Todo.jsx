@@ -2,11 +2,11 @@ import React from "react";
 import { ApiRequest } from "../components/todos/ApiRequest";
 import eventBus from "../hooks/eventBus";
 
-export function Todo ({username, todo, deleteTodo, toggleTodo}) {
+export function Todo ({todo, deleteTodo, toggleTodo}) {
 
    const handleToggle = async () => {
       try {
-         await ApiRequest('toggle-todo', username, todo);
+         await ApiRequest('toggle-todo', todo);
          eventBus.emit('ToastMessage', ['Action réussi']);
          toggleTodo(todo)
       } catch (error) {
@@ -16,7 +16,7 @@ export function Todo ({username, todo, deleteTodo, toggleTodo}) {
 
    const handleDelete = async () => {
       try {
-         await ApiRequest('delete-todo', username, todo);
+         await ApiRequest('delete-todo', todo);
          eventBus.emit('ToastMessage', ['Todo Supprimée']);
          deleteTodo(todo)
       } catch (error) {
@@ -35,4 +35,3 @@ export function Todo ({username, todo, deleteTodo, toggleTodo}) {
          </div>
    )
 }
-export default Todo;

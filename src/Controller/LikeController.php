@@ -3,9 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Like;
+use App\Entity\Video;
 use App\Repository\LikeRepository;
-use App\Repository\UserRepository;
-use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,21 +12,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LikeController extends AbstractController
 {
-   #[Route('/like/{id}/{username}', name: 'app_like', methods: ['POST'])]
-   public function index(int $id, string $username, LikeRepository $likeRepository, EntityManagerInterface $manager, UserRepository $userRepository, VideoRepository $videoRepository): JsonResponse
+   #[Route('/like/{id}', name: 'app_like', methods: ['POST'])]
+   public function index(Video $video, LikeRepository $likeRepository, EntityManagerInterface $manager): JsonResponse
    {
-      $user = $userRepository->findOneBy(['username' => $username]);
-      $video = $videoRepository->findOneBy(['id' => $id]);
-
-      if ($user->getUsername() === 'anonymous') {
-         return new JsonResponse([]);
+      if (!$this->getUser()) {
+         return $this->json([]);
       }
 
-      $like = $likeRepository->findOneBy(['fromUser' => $user, 'toVideo' => $video]);
+      $like = $likeRepository->findOneBy(['fromUser' => $this->getUser(), 'toVideo' => $video]);
 
       if (!$like) {
          $like = new Like();
-         $user->addLike($like);
+         $this->getUser()->addLike($like);
          $video->addLike($like);
          $manager->persist($like);
          $manager->flush();
@@ -36,7 +32,7 @@ class LikeController extends AbstractController
       }
 
       $video->removeLike($like);
-      $user->removeLike($like);
+      $this->getUser()->removeLike($like);
       $manager->remove($like);
       $manager->flush();
 

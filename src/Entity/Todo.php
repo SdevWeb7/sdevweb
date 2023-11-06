@@ -16,11 +16,11 @@ class Todo
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['api:todos'])]
+    #[Groups(['api:todos', 'api:add:todo'])]
     private ?string $content = null;
 
     #[ORM\Column]
-    #[Groups(['api:todos'])]
+    #[Groups(['api:todos', 'api:add:todo'])]
     private ?bool $isDone = null;
 
     #[ORM\ManyToOne(inversedBy: 'todos')]

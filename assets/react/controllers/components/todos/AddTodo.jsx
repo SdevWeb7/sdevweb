@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { ApiRequest } from "./ApiRequest";
 import eventBus from "../../hooks/eventBus";
 
-export function AddTodo ({username, addTodo}) {
+export function AddTodo ({addTodo}) {
    const [svgChecked, setSvgChecked] = useState(false)
    const inputRef = useRef()
 
@@ -15,7 +15,7 @@ export function AddTodo ({username, addTodo}) {
       }
 
       try {
-         await ApiRequest('add-todo', username, todo);
+         await ApiRequest('add-todo', todo);
          eventBus.emit('ToastMessage', ['Todo Ajoutée']);
          addTodo(todo)
          inputRef.current.value = ''

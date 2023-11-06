@@ -1,8 +1,8 @@
-export async function ApiRequest (method, username, todo) {
+export async function ApiRequest (method, todo) {
 
    return new Promise(async (resolve, reject) => {
       try {
-         const response = await fetch(`https://127.0.0.1:8000/api/${method}/${username}`, {
+         const response = await fetch(`https://127.0.0.1:8000/${method}`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',

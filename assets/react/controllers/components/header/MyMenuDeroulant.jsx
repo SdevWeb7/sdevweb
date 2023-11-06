@@ -3,7 +3,7 @@ import { LinksMenu } from "./LinksMenu";
 import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
 
-export const MyMenuDeroulant = ({toggleMenu, user, show}) => {
+export const MyMenuDeroulant = ({toggleMenu, show}) => {
 
    const menuRef = useRef();
    const event = (e) => {
@@ -36,7 +36,7 @@ export const MyMenuDeroulant = ({toggleMenu, user, show}) => {
 
          <motion.svg initial={'hidden'} animate={show ? 'visible' : 'hidden'} variants={burgerVariantClose}><use href="/sprite.svg#my-burger-close"></use></motion.svg>
 
-            <LinksMenu user={user} />
+            <LinksMenu />
 
          </motion.div>
       </MyMenuDeroulantMotion>, document.body)

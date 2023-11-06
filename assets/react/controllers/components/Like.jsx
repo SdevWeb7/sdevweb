@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import eventBus from "../hooks/eventBus";
 
-export function Like ({username, isLiked, videoId, nbLikes}) {
+export function Like ({isLiked, videoId, nbLikes}) {
 
    const [nbLike, setNbLike] = useState(nbLikes)
    const [liked, setLiked] = useState(isLiked);
@@ -13,7 +13,7 @@ export function Like ({username, isLiked, videoId, nbLikes}) {
 
    const handleLike = async (e) => {
       e.preventDefault();
-      const result = await fetch(`https://127.0.0.1:8000/like/${videoId}/${username}`, {
+      const result = await fetch(`https://127.0.0.1:8000/like/${videoId}`, {
          method: 'POST',
          headers: {
             'Accept': 'application/json',

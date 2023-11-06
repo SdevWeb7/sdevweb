@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MyMenuDeroulant } from "./MyMenuDeroulant";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const MyBurger = ({user}) => {
+export const MyBurger = () => {
 
    let [showMenu, setShowMenu] = useState(false);
 
@@ -23,10 +23,9 @@ export const MyBurger = ({user}) => {
             </AnimatePresence>
 
 
-
             <AnimatePresence>
                {showMenu &&
-                  <MyMenuDeroulant toggleMenu={toggleBurger} show={showMenu} user={user} />}
+                  <MyMenuDeroulant toggleMenu={toggleBurger} show={showMenu} />}
             </AnimatePresence>
          </div>
       </>

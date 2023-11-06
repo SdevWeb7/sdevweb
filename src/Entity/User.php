@@ -24,7 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 3, max: 40)]
-    #[Groups(['api:todos'])]
+    #[Groups(['api:todos', 'api:me'])]
     private ?string $username = null;
 
    #[ORM\Column(length: 180, unique: true)]

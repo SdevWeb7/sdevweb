@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useFetch } from "../hooks/useFetch";
 import { useTodos } from "../hooks/reducerTodo";
@@ -6,11 +6,13 @@ import dragula from 'dragula';
 import { FilterTodos } from "../components/todos/FilterTodos";
 import { AddTodo } from "../components/todos/AddTodo";
 import { DragInit } from "../components/todos/DragInit";
-import Todo from "./Todo";
+import { Todo } from "./Todo";
 
-export function Todos ({username}) {
+export function Todos () {
    useDocumentTitle('Todos');
-   const {datas, loading, error} = useFetch(`https://127.0.0.1:8000/api/all-todos/${username}`)
+
+   const {datas, loading, error} = useFetch(`https://127.0.0.1:8000/all-todos`)
+
    const {state, setTodos, clearTodos, filterTodos, addTodo, deleteTodo, toggleTodo} = useTodos()
 
    useEffect(() => {
@@ -41,7 +43,7 @@ export function Todos ({username}) {
          <div className="container-todos">
             <h1>TodoList</h1>
 
-            <AddTodo username={username} addTodo={addTodo} />
+            <AddTodo addTodo={addTodo} />
 
             <FilterTodos clearTodos={clearTodos} filterTodos={filterTodos} />
 
@@ -49,7 +51,7 @@ export function Todos ({username}) {
             {error && <div>{error.toString()}</div>}
 
             <div id="dragula">
-               {filteredTodos && filteredTodos.map(todo => <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} username={username} />)}
+               {filteredTodos && filteredTodos.map(todo => <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />)}
             </div>
 
          </div>

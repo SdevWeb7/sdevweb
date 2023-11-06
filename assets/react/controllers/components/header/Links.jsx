@@ -1,5 +1,5 @@
 import React from "react";
-import { classMaker } from "./classMaker";
+import { classMaker } from "../classMaker";
 
 export function Links () {
 

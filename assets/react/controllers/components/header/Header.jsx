@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useScrollY } from "../hooks/useScrollY";
+import { useScrollY } from "../../hooks/useScrollY";
 import { Links } from "./Links";
 import { MyBurger } from "./MyBurger";
 import { MySearchSvg } from "./MySearchSvg";
 
-export function Header ({user = null}) {
+export function Header () {
 
    const {isScrolledTop} = useScrollY({baseState: true});
 
@@ -26,7 +26,7 @@ export function Header ({user = null}) {
             <div className="header-right-side">
                <hr/>
                <MySearchSvg />
-               <MyBurger user={user} />
+               <MyBurger />
             </div>
 
          </motion.header>

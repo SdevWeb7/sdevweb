@@ -5,7 +5,7 @@ import { Todos } from "./pages/Todos";
 import { Todo } from "./pages/Todo";
 import { PageError } from "./pages/PageError";
 
-const App = ({username}) => {
+const App = () => {
 
    const router = createBrowserRouter([
       {
@@ -15,7 +15,7 @@ const App = ({username}) => {
          children: [
             {
                path: "",
-               element: <Todos username={username} />
+               element: <Todos />
             },
             {
                path: ':id',

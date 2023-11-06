@@ -26,7 +26,7 @@ export function Footer ({user, themeSombre, admin}) {
    return (
       <>
          <motion.footer className={'my-footer'} animate={isScrolledTop ? 'hidden' : 'visible'} variants={variants} transition={{duration: .3, type: 'tween', ease: 'easeInOut'}}>
-            <hr />
+            <hr style={{margin: 0}} />
 
             <div className="footer-container">
 

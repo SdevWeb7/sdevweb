@@ -1,7 +1,14 @@
-import { classMaker } from "./classMaker";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { classMaker } from "../classMaker";
+import { useAuth } from "../../hooks/useAuth";
 
-export function LinksMenu ({user}) {
+export function LinksMenu () {
+
+   const [user, setUser] = useState(null)
+
+   useEffect(() => {
+      useAuth().then(r => setUser(r))
+   }, [])
 
    return (
       <>
